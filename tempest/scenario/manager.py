@@ -427,6 +427,10 @@ class OfficialClientTest(tempest.test.BaseTestCase):
             image = self.config.compute.image_ref
         if flavor is None:
             flavor = self.config.compute.flavor_ref
+	if (create_kwargs is {}) or (not create_kwargs.has_key('nics')):
+	    create_kwargs['nics'] = [
+                                     {'net-id': self.config.compute.fixed_network_id},
+                                    ]
         LOG.debug("Creating a server (name: %s, image: %s, flavor: %s)",
                   name, image, flavor)
         server = client.servers.create(name, image, flavor, **create_kwargs)

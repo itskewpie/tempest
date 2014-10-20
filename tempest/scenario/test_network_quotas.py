@@ -15,6 +15,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import testtools
+
 from neutronclient.common import exceptions as exc
 
 from tempest.scenario.manager import NetworkScenarioTest
@@ -58,6 +60,7 @@ class TestNetworkQuotaBasic(NetworkScenarioTest):
                 break
         self.assertTrue(hit_limit, "Failed: Did not hit quota limit !")
 
+    @testtools.skip("")
     @services('network')
     def test_create_subnet_until_quota_hit(self):
         if not self.networks:

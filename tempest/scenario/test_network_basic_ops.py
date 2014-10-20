@@ -266,5 +266,5 @@ class TestNetworkBasicOps(manager.NetworkScenarioTest):
         self._check_networks()
         self._create_servers()
         self._assign_floating_ips()
-        self._check_public_network_connectivity()
+        #self._check_public_network_connectivity()
         self._check_tenant_network_connectivity()

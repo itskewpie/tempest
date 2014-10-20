@@ -90,7 +90,8 @@ class TestLargeOpsScenario(manager.NetworkScenarioTest):
             name=name, image=self.image,
             flavor=flavor_id,
             min_count=self.config.scenario.large_ops_number,
-            security_groups=[secgroup.name])
+            security_groups=[secgroup.name],
+            nics=[{'net-id': self.config.compute.fixed_network_id}])
         # needed because of bug 1199788
         self.servers = [x for x in client.servers.list() if name in x.name]
         for server in self.servers:

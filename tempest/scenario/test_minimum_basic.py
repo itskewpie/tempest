@@ -86,7 +86,12 @@ class TestMinimumBasicScenario(manager.OfficialClientTest):
         self.keypair = self.create_keypair()
 
     def nova_boot(self):
-        create_kwargs = {'key_name': self.keypair.name}
+        #create_kwargs = {'key_name': self.keypair.name}
+        create_kwargs = {'key_name': self.keypair.name,
+                         'nics': [
+                               {'net-id': self.config.compute.fixed_network_id},
+                         ],
+        }
         self.server = self.create_server(image=self.image,
                                          create_kwargs=create_kwargs)
 
@@ -162,7 +167,9 @@ class TestMinimumBasicScenario(manager.OfficialClientTest):
         self.nova_floating_ip_create()
         self.nova_floating_ip_add()
         self.create_loginable_secgroup_rule()
-        self.ssh_to_server()
-        self.check_partitions()
+
+	if self.config.compute.run_ssh:
+	    self.ssh_to_server()
+	    self.check_partitions()
 
         self.nova_volume_detach()

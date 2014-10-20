@@ -36,7 +36,7 @@ class TestAggregatesBasicOps(manager.OfficialClientTest):
     def credentials(cls):
         username = cls.config.identity.admin_username
         password = cls.config.identity.admin_password
-        tenant_name = cls.config.identity.tenant_name
+        tenant_name = cls.config.identity.admin_tenant_name
         return username, tenant_name, password
 
     def _create_aggregate(self, **kwargs):

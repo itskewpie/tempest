@@ -12,6 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import testtools
+
 from tempest.common.utils.data_utils import rand_name
 from tempest.scenario import manager
 from tempest.test import services
@@ -31,6 +33,7 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
      * Boot an additional instance from the new snapshot based volume
      * Check written content in the instance booted from snapshot
     """
+    run_ssh = manager.OfficialClientTest.config.compute.run_ssh
 
     def _create_volume_from_image(self):
         img_uuid = self.config.compute.image_ref
@@ -117,6 +120,7 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
         actual = self._get_content(ssh_client)
         self.assertEqual(expected, actual)
 
+    @testtools.skipIf(not run_ssh, 'SSH required for this test')
     @services('compute', 'volume', 'image')
     def test_volume_boot_pattern(self):
         keypair = self.create_keypair()
