@@ -60,7 +60,7 @@ class TestNetworkQuotaBasic(NetworkScenarioTest):
                 break
         self.assertTrue(hit_limit, "Failed: Did not hit quota limit !")
 
-    @testtools.skip("")
+    #@testtools.skip("")
     @services('network')
     def test_create_subnet_until_quota_hit(self):
         if not self.networks:

@@ -2,7 +2,7 @@
 #log_config = /opt/stack/tempest/etc/logging.conf.sample
 
 # disable logging to the stderr
-use_stderr = False
+use_stderr = True
 
 # log file
 log_file = tempest.log
@@ -110,7 +110,7 @@ ssh_user = cirros
 
 # Visible fixed network name
 fixed_network_name = tempest-net
-fixed_network_id = 77390acb-ae51-4911-a6ee-56c2bc648600
+fixed_network_id = 04806cc3-fa9a-433d-8095-5d7d26c2e53d
 
 # Network id used for SSH (public, private, etc)
 network_for_ssh = tempest-net
@@ -223,14 +223,14 @@ catalog_type = network
 tenant_network_cidr = 10.100.1.0/24
 
 # The mask bits used to partition the tenant block.
-tenant_network_mask_bits = 24
+tenant_network_mask_bits = 32
 
 # If tenant networks are reachable, connectivity checks will be
 # performed directly against addresses on those networks.
 tenant_networks_reachable = false
 
 # Id of the public network that provides external connectivity.
-public_network_id = f618407b-38ae-47ce-9cb5-28ec6b4ca7bb
+public_network_id = ccbce809-a160-4f5b-a275-b8147b0d0b96
 #public_network_id = 
 
 # Id of a shared public router that provides external connectivity.
